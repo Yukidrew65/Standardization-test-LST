@@ -1,0 +1,206 @@
+.bestsellers {
+  padding-block: var(--space-10);
+}
+
+.bestsellers__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bestsellers__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  width: 100%;
+  margin-top: var(--space-8);
+}
+
+.bestsellers__more {
+  margin-top: var(--gutter);
+}
+
+.bestsellers__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+/* ---- card ---- */
+
+/* The mobile frame draws a 295px card, centred, not a full-bleed one. */
+.product {
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+  margin-inline: auto;
+  /* Without this the card's content sets a min-width and blows the grid
+     tracks apart — 1fr resolves to minmax(auto, 1fr), not minmax(0, 1fr). */
+  min-width: 0;
+}
+
+.product--hidden-mobile {
+  display: none;
+}
+
+.product__media {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.product__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__actions {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 8px;
+}
+
+.product__add,
+.product__wish {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  font-size: var(--fs-12);
+  line-height: var(--lh-12);
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 18%);
+}
+
+.product__add {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.product__add:hover {
+  opacity: 0.9;
+}
+
+.product__wish {
+  background: var(--white);
+  color: var(--navy);
+  padding-inline: 8px;
+}
+
+.is-wishlisted {
+  color: var(--danger);
+}
+
+.product__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5) 6px;
+  text-align: center;
+}
+
+.product__title {
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  letter-spacing: var(--ls-tight);
+  font-weight: 700;
+  color: var(--navy);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.product__category {
+  font-size: var(--fs-14);
+  line-height: var(--lh-14-tall);
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.product__prices {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  font-weight: 700;
+}
+
+.product__was {
+  color: var(--gray-soft);
+  text-decoration: line-through;
+}
+
+.product__now {
+  color: var(--success);
+}
+
+/* ---- loading placeholder ---- */
+
+.skeleton-block,
+.skeleton-line {
+  background: var(--light);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 2px;
+}
+
+.skeleton-line--lg { width: 75%; }
+.skeleton-line--md { width: 50%; }
+.skeleton-line--sm { width: 33%; }
+
+@keyframes skeleton-pulse {
+  50% { opacity: 0.55; }
+}
+
+@media (min-width: 1024px) {
+  .bestsellers {
+    padding-block: 105px;
+  }
+
+  .bestsellers__grid {
+    /* five across at 183px with 30px gaps, straight from the frame.
+       minmax(0, …) so the tracks stay equal regardless of card content. */
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .product {
+    width: auto;
+    margin-inline: 0;
+  }
+
+  .product--hidden-mobile {
+    display: flex;
+  }
+
+  .product__media {
+    height: 238px;
+  }
+
+  /* Hover-reveal only where hover exists. */
+  .product__actions {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .product:hover .product__actions,
+  .product:focus-within .product__actions {
+    opacity: 1;
+  }
+}
