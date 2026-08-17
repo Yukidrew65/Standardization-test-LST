@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  # Vite emits a static bundle to dist/.
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Single-page app: serve index.html for any path so client routing works and a
+# refresh on a deep link does not 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
