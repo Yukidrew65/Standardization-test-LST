@@ -8,7 +8,7 @@ both breakpoints — the `sample_ecommerce-mobile-5` frame at 414px and
 pricing come from [dummyjson.com](https://dummyjson.com/docs/products) through
 Redux Toolkit Query.
 
-**Live dev server:** `http://localhost:3000` after `npm run dev`.
+**Live site:** <https://roaring-travesseiro-d09d5e.netlify.app/>
 
 ---
 
@@ -47,16 +47,15 @@ No environment variables are needed. The product API is public and unauthenticat
 npm run dev
 ```
 
-Serves on <http://localhost:3000> with hot reload.
+Serves on <http://localhost:5173> with hot module replacement.
 
-If port 3000 is occupied, pass another:
+To use a different port, or to expose the server on your network so you can
+check the mobile breakpoint on a real device rather than a resized window:
 
 ```bash
-npm run dev -- -p 3010
+npm run dev -- --port 3000
+npm run dev -- --host          # prints a LAN address
 ```
-
-Next.js also prints a LAN address (e.g. `http://192.168.1.96:3000`) — useful for
-checking the mobile breakpoint on a real device rather than a resized window.
 
 ### Other scripts
 
@@ -70,6 +69,8 @@ checking the mobile breakpoint on a real device rather than a resized window.
 
 ## Build and deployment
 
+**Deployed at:** <https://roaring-travesseiro-d09d5e.netlify.app/>
+
 ```bash
 npm run build     # tsc -b, then vite build -> dist/
 npm run preview   # serve dist/ locally
@@ -81,8 +82,8 @@ runtime, no secrets, and product data is fetched in the browser at runtime.
 
 ### Deploying
 
-The app is a standard Next.js project and deploys without configuration to any
-platform with Node support.
+The output is a plain static bundle, so it deploys to any static host without
+configuration — no server runtime and no secrets.
 
 **Vercel**
 
@@ -91,12 +92,22 @@ npx vercel        # preview
 npx vercel --prod # production
 ```
 
-**Netlify**
+**Netlify** — where this is currently hosted.
+
+Connect the repository and Netlify reads `netlify.toml` for the build command,
+publish directory and Node version; pushes to `main` then deploy automatically.
+
+Or deploy without connecting a repository:
 
 ```bash
-npx netlify deploy --build          # preview
-npx netlify deploy --build --prod   # production
+npm run build
+npx netlify deploy --prod --dir=dist
 ```
+
+The contents of `dist/` can also be dropped straight onto
+<https://app.netlify.com/drop>. `public/_redirects` is copied into the bundle so
+the single-page fallback applies to manual uploads too, where `netlify.toml` is
+not read.
 
 **Self-hosted / container**
 
