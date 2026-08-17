@@ -1,0 +1,128 @@
+.footer__brand {
+  background: var(--light);
+  padding-block: 40px;
+}
+
+.footer__brand-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer__logo {
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  letter-spacing: var(--ls-tight);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--primary);
+}
+
+.footer__main {
+  background: var(--white);
+  padding-block: 50px;
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer__heading {
+  font-size: var(--fs-16);
+  line-height: var(--lh-16);
+  letter-spacing: var(--ls-tight);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer__links a {
+  font-size: var(--fs-14);
+  line-height: var(--lh-14-tall);
+  font-weight: 700;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.footer__links a:hover {
+  color: var(--navy);
+}
+
+.subscribe {
+  display: flex;
+  height: 58px;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  border: 1px solid var(--gray-line);
+  border-radius: var(--radius);
+  background: var(--light);
+}
+
+.subscribe__input {
+  flex: 1;
+  min-width: 0;
+  padding-inline: var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: var(--fs-14);
+}
+
+.subscribe__input:focus {
+  outline: none;
+}
+
+.subscribe__button {
+  flex: none;
+  padding-inline: var(--space-4);
+  background: var(--primary);
+  color: var(--white);
+  font-size: var(--fs-14);
+}
+
+.footer__note {
+  font-size: var(--fs-12);
+  line-height: var(--lh-12);
+  color: var(--muted);
+}
+
+.footer__legal {
+  background: var(--light);
+  padding-block: var(--space-5);
+  font-size: var(--fs-14);
+  line-height: var(--lh-14-tall);
+  font-weight: 700;
+  color: var(--muted);
+}
+
+@media (min-width: 1024px) {
+  .footer__brand-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer__columns {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
