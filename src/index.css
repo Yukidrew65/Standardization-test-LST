@@ -1,0 +1,229 @@
+/*
+ * Design tokens read out of the WEBSITE-LST Figma file (wl7UTHhGhmKRLqiwzha4eg)
+ * via its REST API, rather than sampled by eye from the mockups.
+ */
+:root {
+  /* palette */
+  --navy: #252b42; /* headings, primary text */
+  --muted: #737373; /* body copy */
+  --primary: #23a6f0; /* links, buttons */
+  --primary-soft: #8ec2f2;
+  --green: #23856d; /* top bar, sale price */
+  --success: #2dc071;
+  --danger: #e74040; /* "NEW" badge */
+  --warning: #f3cd03; /* star rating */
+  --light: #fafafa;
+  --gray-soft: #bdbdbd;
+  --gray-line: #e6e6e6;
+  --white: #ffffff;
+
+  /* type scale — size / line-height / letter-spacing, exactly as in the file */
+  --fs-12: 12px;
+  --lh-12: 16px;
+  --fs-14: 14px;
+  --lh-14: 20px;
+  --lh-14-tall: 24px;
+  --fs-16: 16px;
+  --lh-16: 24px;
+  --fs-20: 20px;
+  --lh-20: 30px;
+  --fs-24: 24px;
+  --lh-24: 32px;
+  --fs-30: 30px;
+  --lh-30: 45px;
+  --fs-40: 40px;
+  --lh-40: 50px;
+  --ls-wide: 0.2px;
+  --ls-tight: 0.1px;
+
+  /* layout */
+  --container: 1050px; /* dominant desktop content column */
+  --container-wide: 1146px; /* category grid only */
+  --gutter: 24px;
+
+  /* spacing */
+  --space-1: 5px;
+  --space-2: 10px;
+  --space-3: 15px;
+  --space-4: 20px;
+  --space-5: 25px;
+  --space-6: 30px;
+  --space-8: 48px;
+  --space-10: 80px;
+
+  --radius: 5px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--muted);
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: var(--fs-14);
+  line-height: var(--lh-14);
+  letter-spacing: var(--ls-wide);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- shared layout helpers ---- */
+
+/* Standard 1050px content column, 24px gutter below the desktop breakpoint. */
+.wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Wider column used by the category grid only. */
+.wrap--wide {
+  max-width: var(--container-wide);
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    padding-inline: 0;
+  }
+}
+
+/* ---- shared type roles ---- */
+
+.eyebrow {
+  font-size: var(--fs-20);
+  line-height: var(--lh-20);
+  color: var(--muted);
+}
+
+.section-title {
+  font-size: var(--fs-24);
+  line-height: var(--lh-24);
+  letter-spacing: var(--ls-tight);
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.section-sub {
+  max-width: 330px;
+  font-size: var(--fs-14);
+  line-height: var(--lh-14);
+  color: var(--muted);
+}
+
+@media (min-width: 1024px) {
+  .section-sub {
+    max-width: none;
+  }
+}
+
+/* ---- shared button ---- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  padding: 15px 40px;
+  border-radius: var(--radius);
+  font-size: var(--fs-14);
+  line-height: var(--lh-14-tall);
+  font-weight: 700;
+  transition: background-color 0.2s, color 0.2s, opacity 0.2s;
+}
+
+.btn--solid {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn--solid:hover {
+  opacity: 0.9;
+}
+
+.btn--outline {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
