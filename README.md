@@ -85,13 +85,6 @@ runtime, no secrets, and product data is fetched in the browser at runtime.
 The output is a plain static bundle, so it deploys to any static host without
 configuration — no server runtime and no secrets.
 
-**Vercel**
-
-```bash
-npx vercel        # preview
-npx vercel --prod # production
-```
-
 **Netlify** — where this is currently hosted.
 
 Connect the repository and Netlify reads `netlify.toml` for the build command,
